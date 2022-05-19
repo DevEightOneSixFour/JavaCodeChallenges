@@ -58,3 +58,38 @@ public class TodoModel {
     }
 
  */
+
+/**
+ * My Psuedo code
+ *
+ * 	local {
+ * 	todo1…..
+ * 	todo2….
+ *   todo3....
+ *   todo4…..
+ * }
+ *
+ * Single Source of Truth
+ * 	network {
+ * 		todo1…..
+ *
+ *
+ * 		todo4…
+ * 		todo5….
+ *        }
+ *
+ * for(todo in networkList) {
+ *
+ * //	checks if network has removed todos
+ * // if so remove it from the localList
+ * 		if (localList.contains(todo) && !network list.contains(todo)) {
+ * 			localList.remove(todo)
+ *        }
+ *
+ * //checks if network has todos that are not in local
+ * 		if(!localList.contains(todo)) {
+ * 			local.add(todo)
+ *    }
+ *
+ * }
+ */
