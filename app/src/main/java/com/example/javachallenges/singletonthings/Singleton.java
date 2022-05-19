@@ -12,13 +12,19 @@ public class Singleton
     }
     // private instance, so that it can be
     // accessed by only by getInstance() method
-    private static Singleton instance;
+    private static Singleton instance; // Singleton();
 
     private Singleton()
     {
         // private constructor
     }
 
+    public static Singleton fetchInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
     // Thread safe creation of a Singleton
     public static Singleton getInstance()
     {
@@ -39,3 +45,17 @@ public class Singleton
     }
 
 }
+ // Dagger or Hilt dependency injection
+ // Dagger annotations
+// @Component, @Provides, @Inject, @Module, @Subcomponents, @Singleton
+
+// Hilt annotations
+// @Provides, @Inject, @Module, @HiltApplication, @HiltAndroidViewModel, @Singleton
+
+
+
+
+
+
+
+
