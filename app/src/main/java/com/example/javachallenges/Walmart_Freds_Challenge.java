@@ -7,6 +7,7 @@ package com.example.javachallenges;
         PUT /api/todos?id=""
         DELETE /api/todos?id=""
 
+// Local Database
         {
         "todo_list": [
         { "id":"&*(HJK)", "name":"todo1"},
@@ -16,6 +17,7 @@ package com.example.javachallenges;
         ]
         }
 
+// From Network
         {
         "todo_list": [
         { "id":"&*(HJK)", "name":"todo1"},
@@ -24,6 +26,15 @@ package com.example.javachallenges;
         { "id":"&^()*))", "name":"todo4"},
         { "id":"&^()**&^^*", "name":"todo5"}
         ]
+        }
+
+        for(todo in networkList) {
+            if(localList.contains(todo) && !networkList.contains(todo) {
+                localList.remove(todo)
+            }
+            if (!localList.contains(todo)) {
+                localList.add(todo)
+            }
         }
 
 // client
@@ -61,35 +72,46 @@ public class TodoModel {
 
 /**
  * My Psuedo code
- *
- * 	local {
- * 	todo1…..
- * 	todo2….
- *   todo3....
- *   todo4…..
+ * <p>
+ * local {
+ * todo1…..
+ * todo2….
+ * todo3....
+ * todo4…..
  * }
- *
+ * <p>
  * Single Source of Truth
- * 	network {
- * 		todo1…..
- *
- *
- * 		todo4…
- * 		todo5….
- *        }
- *
+ * network {
+ * todo1…..
+ * <p>
+ * <p>
+ * todo4…
+ * todo5….
+ * }
+ * <p>
  * for(todo in networkList) {
- *
+ * <p>
  * //	checks if network has removed todos
  * // if so remove it from the localList
- * 		if (localList.contains(todo) && !network list.contains(todo)) {
- * 			localList.remove(todo)
- *        }
- *
+ * if (localList.contains(todo) && !network list.contains(todo)) {
+ * localList.remove(todo)
+ * }
+ * <p>
  * //checks if network has todos that are not in local
- * 		if(!localList.contains(todo)) {
- * 			local.add(todo)
- *    }
+ * if(!localList.contains(todo)) {
+ * local.add(todo)
+ * }
+ * <p>
+ * }
+ *
+ * 5/26 update, should actually remove the old todos
+ * // get database todos
+ * List<TodoModel> localList = getDBTodos(); 
+ *  //remove unneeded todos
+ * for(TodoModel todo: localList) {
+ *  if (!todoNetworkList.contains(todo)) { 
+ * sqlRemoveTodo(todo)
+ * }
  *
  * }
  */
