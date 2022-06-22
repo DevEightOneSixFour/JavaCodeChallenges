@@ -103,15 +103,35 @@ public class TodoModel {
  * }
  * <p>
  * }
- *
+ * <p>
  * 5/26 update, should actually remove the old todos
  * // get database todos
  * List<TodoModel> localList = getDBTodos(); 
- *  //remove unneeded todos
+ * //remove unneeded todos
  * for(TodoModel todo: localList) {
  *  if (!todoNetworkList.contains(todo)) { 
  * sqlRemoveTodo(todo)
  * }
- *
+ * <p>
  * }
  */
+public void requestParseAndSave() {
+// parse the json response
+
+    List<TodoModel> todoNetworkList=getNetworkTodos();
+    List<TodoModel> todoLocalList=getDBTodos(); // added local list reference
+
+        for(TodoModel todoNetwork:todoNetworkList) {
+            sqlAddTodoIfNotExists(todoNetwork);
+        }
+
+        // here;
+        // TODO : we should take care about stales refs
+        for(TodoModel currentTodo:local){
+            if(!todoNetworkList.contains(currentTodo))
+                // function to remove from todoLocalList
+                sqlRemoveTodo(currentTodo);
+            }
+        }
+
+
